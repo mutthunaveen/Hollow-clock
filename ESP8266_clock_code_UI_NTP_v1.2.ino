@@ -1,5 +1,6 @@
 ////////////////////////////////////////////////////////////////////////
 //THANK YOU FOR ALL THE BASE CODE CONTRIBUTORS
+// Now you can connect using following domain -> http://wifi-clock.local/
 ////////////////////////////////////////////////////////////////////////
 
 #include <ESP8266WiFi.h>
@@ -141,6 +142,14 @@ void setup() {
   Serial.println("Ready");
   Serial.print("IP address: ");
   Serial.println(WiFi.localIP());
+
+
+  //http://wifi-clock.local/
+
+  if (!MDNS.begin("wifi-clock")) {             // Start the mDNS responder for esp8266.local
+    Serial.println("Error setting up MDNS responder!");
+  }
+
 
   // Initialize a NTPClient to get time
   timeClient.begin();
